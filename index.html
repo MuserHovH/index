@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>aBout_HovH</title>
+		<link rel="stylesheet" href="css/div_demoS.css">
+		<style>
+		  body {
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		  }
+		
+		  .background {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background: linear-gradient(90deg, rgba(255, 242, 244, 0.5), rgba(233, 235, 250, 0.3), rgba(225, 250, 221, 0.5), rgba(161,140,209,0.3), rgba(251,194,235,0.5), rgba(166,193,238,0.3), rgba(251,194,235,0.3));
+		    background-size: 400% 400%;
+		    animation: gradientAnimation 10s ease infinite;
+		  }
+		
+		  @keyframes gradientAnimation {
+		    0% {
+		      background-position: 0% 50%;
+		    }
+		    50% {
+		      background-position: 100% 50%;
+		    }
+		    100% {
+		      background-position: 0% 50%;
+		    }
+		  }
+		  #progressBar {
+		      width: 100%;
+		      height: 10px;
+		      background-color: skyblue;
+		      border-radius: 10px;
+		      box-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+		      opacity: 0.8;
+		  }
+		  .Music_Wz{
+		  	position: absolute;
+		  	bottom: 10px;
+		  	left: 10px;
+		  }
+		  table{
+		  	border-collapse: collapse;
+		  	border-style: solid;
+		  	border-color: white;
+		  	text-align: center;
+			border-radius: 5px;
+		  }
+		  tr,td{
+			  width: 155px;
+			  height: 45px;
+		  }
+		  a {
+		      font-family: Arial, sans-serif; /* 指定字体 */
+		      font-size: 20px; /* 指定字号 */
+		      font-weight: normal; /* 指定字重 */
+		      text-decoration: none; /* 去除下划线 */
+		      color: #007bff; /* 设置链接颜色 */
+		    }
+		</style>
+	</head>
+	<body>
+		
+		<div class="ZhuTi">
+			<div class="background">
+			<!-- 底部音乐播放框架 -->
+				<div id="progressBar">
+					<div class="Music_Wz">
+							<audio id="myAudio" src="./music/audio.mp3" controls loop></audio>
+					</div>
+				</div>
+			<!-- <div class="left_Music"></div> -->
+			<div class="kuangJia">
+				
+				
+				<div class="top_imgs">
+				<img src="./img/avatar.jpg" alt="" />
+				</div>
+				<div class="kuangJia_nei01">
+					<div class="Kj_nei03">
+						<h1 style="text-align: center; color: white; font-size: 50px; margin-top: 80px;">HovH个人引导页</h1>
+						<p style="text-align: center;font-size: 16px; color: white; margin-top: -10px;">她只是途经我留下了星火 而我却任凭它焚烧了我整个荒原</p>
+					</div>
+					<div class="kuangJia_nei02">
+						<table border="2px" cellspacing="0" aria-colspan="colspan">
+							<tr>
+								<td><a style="color: white" font-size="5px" href="">boke</a></td>
+								<td><a style="color: white" font-size="5px" href="https://github.com/MuserHovH/HovH">HovH</a></td>
+								<td><a style="color: white" font-size="5px">AI</a></td>
+								<td><a style="color: white" font-size="5px">Hello World</a></td>
+								<td><a style="color: white" font-size="5px" href="https://www.baidu.com/">百度一下</a></td>
+								<td><a style="color: white" font-size="5px" href="https://fireworks.nianbroken.top/">看个烟花</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</body>
+	<script>
+	    // 获取音频元素和进度条元素
+	    var audio = document.getElementById('myAudio');
+	    var progressBar = document.getElementById('progressBar');
+	
+	    // 计算进度条的宽度
+	    function updateProgressBar() {
+	        var progress = (audio.currentTime / audio.duration) * 100;
+	        progressBar.style.width = progress + '%';
+	    }
+	
+	    // 监听音频播放事件
+	    audio.addEventListener('timeupdate', updateProgressBar);
+	
+	    // 点击进度条时跳转到相应的时间
+	    progressBar.addEventListener('click', function(event) {
+	        var clickPosition = event.clientX - this.offsetLeft;
+	        var progress = clickPosition / this.offsetWidth;
+	        audio.currentTime = progress * audio.duration;
+	    });
+	</script>
+</html>
